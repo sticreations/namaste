@@ -1,4 +1,5 @@
 # Namaste
+<div style="text-align:center"><img src ="logo.png" height="180px" /></div>
 
 A CLI Tool to genereate Projects from Blueprints
 
