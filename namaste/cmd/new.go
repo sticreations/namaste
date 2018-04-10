@@ -39,12 +39,10 @@ var newCmd = &cobra.Command{
 }
 
 func generatePrompt() error {
-	fmt.Printf("HALLOOOOOOOO")
 	usr, err := user.Current()
 	if err != nil {
 		fmt.Errorf("Could not get User: %v", err)
 	}
-
 	nam, err := namaste.Initialize(usr.HomeDir + "/.namaste/")
 	if err != nil {
 		return fmt.Errorf("Im very sorry. But you have no blueprints in your Path")
@@ -63,7 +61,7 @@ func generatePrompt() error {
 	}
 	_, res, err := prompt.Run()
 	if err != nil {
-		fmt.Errorf("Alla.")
+		fmt.Errorf("Could not Read User Input: %v", err)
 	}
 	fmt.Printf(res)
 	return nil

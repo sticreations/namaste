@@ -2,10 +2,29 @@ package namaste
 
 import (
 	"fmt"
+	"os/user"
 	"testing"
 )
 
 var testDir = "./testdata/"
+
+func TestGetBlueprints(t *testing.T) {
+	var n Namaste
+	n, err := Initialize(testDir)
+	if err != nil {
+		t.Errorf("Could not initialize Project: %v", err)
+	}
+	bp := n.GetBlueprints()
+
+	if !(len(bp) > 0) {
+		t.Errorf("There are no Blueprints initialized")
+	}
+
+}
+
+func TestCreateNewProject(t *testing.T) {
+
+}
 
 func TestInitialization(t *testing.T) {
 	g, err := Initialize(testDir)
@@ -19,14 +38,16 @@ func TestInitialization(t *testing.T) {
 
 	if len(g.blueprints) == 0 {
 		t.Errorf("Testdata could not be loaded")
-	} else {
-		fmt.Printf("%v Blueprints could be found, first ones Name is %v ", len(g.blueprints), g.blueprints[0].Name)
 	}
 
 }
 
 func TestInitializationWithCreateDir(t *testing.T) {
-	_, err := Initialize("~/.namaste")
+	usr, err := user.Current()
+	if err != nil {
+		fmt.Errorf("Could not get User: %v", err)
+	}
+	_, err = Initialize(usr.HomeDir + "/.namaste/")
 	if err != nil {
 		t.Errorf("Could not create new Directory: %v", err)
 	}

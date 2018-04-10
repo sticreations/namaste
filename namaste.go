@@ -9,6 +9,7 @@ import (
 
 type Namaste interface {
 	GetBlueprints() []*Blueprint
+	CreateNewProject(bp *Blueprint, dir string) error
 }
 
 type namaste struct {
@@ -26,6 +27,10 @@ type Blueprint struct {
 	files []string
 }
 
+func (n *namaste) CreateNewProject(bp *Blueprint, dir string) error {
+	return nil
+}
+
 func (n *namaste) GetBlueprints() []*Blueprint {
 	return n.blueprints
 }
@@ -41,7 +46,7 @@ func Initialize(root string) (*namaste, error) {
 	if !checkIfDirectoryExists(root) {
 		err := os.Mkdir(root, 0755)
 		if err != nil {
-			fmt.Errorf("FUCK : %v", err)
+			return n, fmt.Errorf("Could not Create Directory: %v", err)
 		}
 	}
 	n.scanForBlueprints()
