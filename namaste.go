@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"text/template"
 )
 
 type Namaste interface {
@@ -25,9 +26,12 @@ type Blueprint struct {
 	dir string
 
 	files []string
+
+	folders []string
 }
 
 func (n *namaste) CreateNewProject(bp *Blueprint, dir string) error {
+	template.New("File").ParseFiles(bp.files)
 	return nil
 }
 
@@ -35,8 +39,8 @@ func (n *namaste) GetBlueprints() []*Blueprint {
 	return n.blueprints
 }
 
-func (n *namaste) newBlueprint(path, name string) {
-	bp := &Blueprint{dir: path, Name: name}
+func (n *namaste) newBlueprint(path string, file os.FileInfo) {
+	bp := &Blueprint{dir: path, Name: file.Name}
 	bp.Masterplan = readMasterplan(path + "/masterplan.yaml")
 	n.blueprints = append(n.blueprints, bp)
 }

@@ -23,6 +23,13 @@ func TestGetBlueprints(t *testing.T) {
 }
 
 func TestCreateNewProject(t *testing.T) {
+	n, err := Initialize(testDir)
+	if err != nil {
+		t.Error("Could not initialize")
+	}
+	bp := n.GetBlueprints()
+
+	n.CreateNewProject(bp[0], "./testdata/generated")
 
 }
 
@@ -39,7 +46,6 @@ func TestInitialization(t *testing.T) {
 	if len(g.blueprints) == 0 {
 		t.Errorf("Testdata could not be loaded")
 	}
-
 }
 
 func TestInitializationWithCreateDir(t *testing.T) {
@@ -62,7 +68,7 @@ func TestReadDirectory(t *testing.T) {
 }
 
 func TestDirContainsBlueprint(t *testing.T) {
-	b := dirContainsBlueprintConfig(testDir + "nodejs/fes/")
+	b := dirContainsBlueprintConfig(testDir + "nodejs/testservice/")
 	if !b {
 		t.Errorf("Cant find the Masterplan")
 	}
