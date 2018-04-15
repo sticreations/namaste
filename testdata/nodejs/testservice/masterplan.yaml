@@ -1,0 +1,14 @@
+#############################
+# Basic Project Information #
+#############################
+
+
+vars_needed:
+  name: "world"
+  
+
+vars :
+  foo: "bar"
+  bar: ""
+  lang: "nodejs"
+
