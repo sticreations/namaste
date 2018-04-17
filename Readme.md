@@ -42,7 +42,7 @@ go test
 
 * [Go](https://golang.org/) - Go
 * [Cobra](https://github.com/spf13/cobra) - CLI Framework
-* [ROME](github.com/manifoldco/promptui) - PromptUI
+* [PromptUI](github.com/manifoldco/promptui) - PromptUI
 
 ## Contributing
 
@@ -54,7 +54,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Bastian Groß** - *Initial work* - [PurpleBooth](https://github.com/sticreations)
+* **Bastian Groß** - *Initial work* - [Dertouristik Online GmbH](https://github.com/sticreations)
 
 See also the list of [contributors](https://github.com/sticreations/namaste/contributors) who participated in this project.
 
